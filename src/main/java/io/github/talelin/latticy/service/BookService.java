@@ -13,5 +13,7 @@ public interface BookService extends IService<BookDO> {
 
     Integer update(Integer id, BookDTO bookDTO);
 
+    BookDO query(Integer id);
+
     IPage<BookDO> queryAll(Integer page, Integer count);
 }

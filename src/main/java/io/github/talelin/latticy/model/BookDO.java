@@ -7,10 +7,6 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * @author pedro@TaleLin
- * @author Juzi@TaleLin
- */
 @Data
 @TableName("book")
 @EqualsAndHashCode(callSuper = true)
@@ -24,5 +20,6 @@ public class BookDO extends BaseModel implements Serializable {
     private String press;
     private String summary;
     private String isbn;
+    private Integer categoryId;
     private BigDecimal price;
 }

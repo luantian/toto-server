@@ -2,6 +2,7 @@ package io.github.talelin.latticy.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.talelin.autoconfigure.exception.NotFoundException;
 import io.github.talelin.latticy.common.mybatis.Page;
 import io.github.talelin.latticy.dto.book.BookDTO;
 import io.github.talelin.latticy.mapper.BookMapper;
@@ -38,6 +39,13 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, BookDO> implements 
         bookDO.setId(id);
         BeanUtils.copyProperties(bookDTO, bookDO);
         return bookMapper.updateById(bookDO);
+    }
+
+    @Override
+    public BookDO query(Integer id) {
+        BookDO bookDO = bookMapper.selectById(id);
+        if (bookDO == null) throw new NotFoundException();
+        return bookDO;
     }
 
     @Override
